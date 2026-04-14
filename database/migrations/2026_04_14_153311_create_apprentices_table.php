@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('apprentices', function (Blueprint $table) {
             $table->id();
             $table->string('name_apren');
-            $table->string('email')->unique();
+            $table->string('email')->unique(); 
             $table->string('cell');
 
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
