@@ -2,17 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\TeachersController;
+use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\AreasController;
+use App\Http\Controllers\TrainingCentersController;
+use App\Http\Controllers\ApprenticesController;
+use App\Http\Controllers\ComputersController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/teacher/pruebas', [TeachersController::class, 'pruebas']);
+Route::get('/course/pruebas', [CoursesController::class, 'pruebas']);
+Route::get('/area/pruebas', [AreasController::class, 'pruebas']);
+Route::get('/center/pruebas', [TrainingCentersController::class, 'pruebas']);
+Route::get('/apprentice/pruebas', [ApprenticesController::class, 'pruebas']);
+Route::get('/computer/pruebas', [ComputersController::class, 'pruebas']);
