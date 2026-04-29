@@ -9,12 +9,12 @@ class TrainingCentersController extends Controller
 {
     public function pruebas()
 {
-    $center = TrainingCenter::find(1);
+    //$center = TrainingCenter::find(1);
 
-    return [
-        'training_center' => $center,
-        'course' => $center->course,
-        'teacher' => $center->teacher
-    ];
+    // return [
+    //     'training_center' => $center,
+    //     'course' => $center->course,
+    //     'teacher' => $center->teacher
+    // ];
 }
 }

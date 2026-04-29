@@ -9,9 +9,13 @@ use App\Http\Controllers\TrainingCentersController;
 use App\Http\Controllers\ApprenticesController;
 use App\Http\Controllers\ComputersController;
 
+use App\Http\Controllers\ConsultaController;
+
 Route::get('/teacher/pruebas', [TeachersController::class, 'pruebas']);
 Route::get('/course/pruebas', [CoursesController::class, 'pruebas']);
 Route::get('/area/pruebas', [AreasController::class, 'pruebas']);
 Route::get('/center/pruebas', [TrainingCentersController::class, 'pruebas']);
 Route::get('/apprentice/pruebas', [ApprenticesController::class, 'pruebas']);
 Route::get('/computer/pruebas', [ComputersController::class, 'pruebas']);
+
+Route::get('/consulta/pruebas01', [ConsultaController::class, 'pruebas01']);
