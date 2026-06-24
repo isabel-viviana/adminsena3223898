@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Apprentice;
 
-class ApprenticesController extends Controller
+class ApprenticeController extends Controller
 {
-    public function pruebas()
+    /*public function pruebas()
 {
     $apprentice = Apprentice::find(5);
     if (!$apprentice){
@@ -19,5 +19,23 @@ class ApprenticesController extends Controller
         'course' => $apprentice->course,
         'computer' => $apprentice->computer
     ];
-}
+}*/
+    
+    public function create (){
+
+        return view('apprentice.create');
+
+
+    }
+
+    public function store(Request $request){
+
+        $apprentice = new Aprentice();
+
+        $apprentice->name=$request->name;
+        $apprentice->save();
+
+        return $area;
+
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Course;
 
-class CoursesController extends Controller
+class CourseController extends Controller
 {
     public function pruebas()
 {
