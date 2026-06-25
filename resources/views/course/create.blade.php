@@ -9,20 +9,20 @@
 <body>
     <h1>Formulario de curso</h1>
     
-    <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
         <label>
-            Nombre:
+            Numero de Curso:
             <br>
-            <input type="text" name="nombre">
+            <input type="text" name="name_curso">
         </label>
         <br>
         <label>
-            Gmail:
+            Dia:
             <br>
-            <input type="text" name="gmail">
+            <input type="text" name="day">
         </label>
         <br>
         <br>
@@ -41,14 +41,28 @@
         <br>
         <br>
 
-        <label for="trainingCenter_id">centro de formacion</label>
+        <label for="training_centers_id">centro de formacion</label>
 
-        <select name="trainingCenter_id" id="trainingCenter_id" class="form-control">
+        <select name="training_centers_id" id="training_centers_id" class="form-control">
             <option value="">Seleccione un centro de formacion</option>
 
             @foreach($trainingCenters as $trainingCenter)
                 <option value="{{ $trainingCenter->id }}">
                     {{ $trainingCenter->name }}
+                </option>
+            @endforeach
+        </select>
+        <br>
+        <br>
+
+        <label for="teachers">Profesores (Selecciona uno o varios):</label>
+
+        <select name="teachers[]" id="teachers" class="form-control" multiple>
+            <option value="">Seleccione profesores</option>
+
+            @foreach($teachers as $teacher)
+                <option value="{{ $teacher->id }}">
+                    {{ $teacher->nombre }} - {{ $teacher->gmail }}
                 </option>
             @endforeach
         </select>

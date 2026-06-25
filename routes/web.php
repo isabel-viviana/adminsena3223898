@@ -25,6 +25,8 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\TrainingCenterController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ApprenticeController;
 
 Route::get('area/create',[AreaController::class,'create']);
 Route::post('area/store',[AreaController::class,'store'])->name('area.store');
@@ -38,5 +40,8 @@ Route::post('trainingCenter/store',[TrainingCenterController::class,'store'])->n
 Route::get('teacher/create',[TeacherController::class,'create']);
 Route::post('teacher/store',[TeacherController::class,'store'])->name('teacher.store');
 
-Route::get('course/create',[TeacherController::class,'create']);
-Route::post('course/store',[TeacherController::class,'store'])->name('teacher.store');
+Route::get('course/create',[CourseController::class,'create']);
+Route::post('course/store',[CourseController::class,'store'])->name('course.store');
+
+Route::get('apprentice/create',[ApprenticeController::class,'create']);
+Route::post('apprentice/store',[ApprenticeController::class,'store'])->name('apprentice.store');

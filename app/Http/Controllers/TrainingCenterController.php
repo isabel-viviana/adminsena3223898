@@ -24,14 +24,10 @@ class TrainingCenterController extends Controller
     }
 
     public function store(Request $request){
-
-        $trainingCenter = new TrainingCenter();
-
-        $trainingCenter->name=$request->name;
-        $trainingCenter->location=$request->location;
-        $trainingCenter->save();
-
-        return $trainingCenter;
-
+        $trainingCenter = TrainingCenter::create([
+            'name' => $request->name,
+            'location' => $request->location
+        ]);
+        return redirect()->back()->with('success', 'Centro de formación creado exitosamente');
     }
 }

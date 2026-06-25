@@ -4,19 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Area;
+use App\Models\TrainingCenter;
+use App\Models\Teacher;
 
 class CourseController extends Controller
 {
-    public function pruebas()
-{
-    $course = Course::find(1);
+    public function create (){
+        $areas = Area::all();
+        $trainingCenters = TrainingCenter::all();
+        $teachers = Teacher::all();
 
-    return [
-        'course' => $course,
-        'area' => $course->area,
-        'training_center' => $course->trainingCenter,
-        'teacher' => $course->teacher,
-        'apprentice' => $course->apprentice
-    ];
-}
+        return view('course.create', compact('areas', 'trainingCenters', 'teachers'));
+    }
+
+    public function store(Request $request)
+    {
+        $courseData = $request->except('teachers');
+        $course = Course::create($courseData);
+        
+        // Asignar profesores a través de la tabla intermedia
+        if ($request->has('teachers') && !empty($request->teachers)) {
+            $course->teachers()->attach($request->teachers);
+        }
+        
+        return redirect()->back()->with('success', 'Curso creado exitosamente');
+    }
 }

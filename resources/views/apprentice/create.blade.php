@@ -9,46 +9,52 @@
 <body>
     <h1>Formulario de aprendices</h1>
     
-    <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('apprentice.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
         <label>
             Nombre:
             <br>
-            <input type="text" name="nombre">
+            <input type="text" name="name_apren">
         </label>
         <br>
         <label>
-            Gmail:
+            Email:
             <br>
-            <input type="text" name="gmail">
+            <input type="email" name="email">
+        </label>
+        <br>
+        <label>
+            Celular:
+            <br>
+            <input type="text" name="cell">
         </label>
         <br>
         <br>
 
-        <label for="course_id">area</label>
+        <label for="course_id">curso</label>
 
         <select name="course_id" id="course_id" class="form-control">
             <option value="">Seleccione un curso</option>
 
-            @foreach($cursos as $curso)
-                <option value="{{ $curso->id }}">
-                    {{ $curso->name }}
+            @foreach($courses as $course)
+                <option value="{{ $course->id }}">
+                    {{ $course->name_curso }}
                 </option>
             @endforeach
         </select>
         <br>
         <br>
 
-        <label for="computer_id">centro de formacion</label>
+        <label for="computer_id">computador</label>
 
         <select name="computer_id" id="computer_id" class="form-control">
             <option value="">Seleccione un computador</option>
 
             @foreach($computers as $computer)
                 <option value="{{ $computer->id }}">
-                    {{ $computer->name }}
+                    {{ $computer->numero }} - {{ $computer->marca }}
                 </option>
             @endforeach
         </select>

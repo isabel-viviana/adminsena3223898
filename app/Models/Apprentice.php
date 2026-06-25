@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Apprentice extends Model
 {
     use HasFactory;
+    
     public function course()
     {
         return $this->belongsTo(Course::class);
@@ -17,4 +18,12 @@ class Apprentice extends Model
     {
         return $this->belongsTo(Computer::class);
     }
+
+    protected $fillable = [
+        "name_apren",
+        "email",
+        "cell",
+        "course_id",
+        "computer_id"
+    ];
 }

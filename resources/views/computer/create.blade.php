@@ -14,13 +14,13 @@
         @csrf
 
         <label>
-            Numero de curso:
+            Numero de Computadora:
             <br>
             <input type="text" name="numero">
         </label>
         <br>
         <label>
-            Dia:
+            Marca:
             <br>
             <input type="text" name="marca">
         </label>

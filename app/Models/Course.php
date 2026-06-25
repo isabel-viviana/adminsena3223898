@@ -9,6 +9,7 @@ use app\models\TrainingCenter;
 class Course extends Model
 {
     use HasFactory;
+    
     public function area()
     {
         return $this->belongsTo(Area::class);
@@ -26,6 +27,13 @@ class Course extends Model
 
     public function teachers()
     {
-        return $this->belongsToMany(Teacher::class);
+        return $this->belongsToMany(Teacher::class, 'course_teachers');
     }
+
+    protected $fillable = [
+        "name_curso",
+        "day",
+        "area_id",
+        "trainingCenter_id"
+    ];
 }

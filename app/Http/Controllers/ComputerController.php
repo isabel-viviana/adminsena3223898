@@ -23,16 +23,10 @@ class ComputerController extends Controller
     }
 
     public function store(Request $request){
-
-        
-
-        $computer = new Computer();
-
-        $computer->numero=$request->numero;
-        $computer->marca=$request->marca;
-        $computer->save();
-
-        return $computer;
-
+        $computer = Computer::create([
+            'numero' => $request->numero,
+            'marca' => $request->marca
+        ]);
+        return redirect()->back()->with('success', 'Computador creado exitosamente');
     }
 }

@@ -9,10 +9,25 @@ class Teacher extends Model
 {
     use HasFactory;
 
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function trainingCenter()
+    {
+        return $this->belongsTo(TrainingCenter::class);
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_teachers');
+    }
+
     protected $fillable = [
-        "nombre",
-        "gmail",
+        "name",
+        "email",
         "area_id",
-        "trainingCenter_id"
+        "training_centers_id"
     ];
 }

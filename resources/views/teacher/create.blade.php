@@ -16,13 +16,13 @@
         <label>
             Nombre:
             <br>
-            <input type="text" name="nombre">
+            <input type="text" name="name">
         </label>
         <br>
         <label>
-            Gmail:
+            Email:
             <br>
-            <input type="text" name="gmail">
+            <input type="email" name="email">
         </label>
         <br>
         <br>
@@ -41,14 +41,28 @@
         <br>
         <br>
 
-        <label for="trainingCenter_id">centro de formacion</label>
+        <label for="training_centers_id">centro de formacion</label>
 
-        <select name="trainingCenter_id" id="trainingCenter_id" class="form-control">
+        <select name="training_centers_id" id="training_centers_id" class="form-control">
             <option value="">Seleccione un centro de formacion</option>
 
             @foreach($trainingCenters as $trainingCenter)
                 <option value="{{ $trainingCenter->id }}">
                     {{ $trainingCenter->name }}
+                </option>
+            @endforeach
+        </select>
+        <br>
+        <br>
+
+        <label for="courses">Cursos (Selecciona uno o varios):</label>
+
+        <select name="courses[]" id="courses" class="form-control" multiple>
+            <option value="">Seleccione cursos</option>
+
+            @foreach($courses as $course)
+                <option value="{{ $course->id }}">
+                    {{ $course->name_curso }} - {{ $course->day }}
                 </option>
             @endforeach
         </select>
