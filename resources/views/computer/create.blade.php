@@ -1,35 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>computer create</title>
-</head>
-<body>
-    <h1>formulario computer</h1>
-    
-    <form action="{{route('computer.store')}}" method="POST" enctype="multipart/form-data">
+@extends('layouts.app')
 
-        @csrf
+@section('content')
 
-        <label>
-            Numero de Computadora:
-            <br>
-            <input type="text" name="numero">
-        </label>
-        <br>
-        <label>
-            Marca:
-            <br>
-            <input type="text" name="marca">
-        </label>
-        <br>
-        
-        <br>
+<form action="{{route('computer.store')}}" method="POST" enctype="multipart/form-data">
 
-        <button type="submit">Enviar Formulario:</button>
-    </form>
+    @csrf
 
-</body>
-</html>
+    <div class="mb-3">
+        <label for="numero" class="form-label">Número de Computadora</label>
+        <input type="text" name="numero" id="numero" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="marca" class="form-label">Marca</label>
+        <input type="text" name="marca" id="marca" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar Formulario</button>
+</form>
+
+@endsection

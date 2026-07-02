@@ -28,6 +28,6 @@ class TrainingCenterController extends Controller
             'name' => $request->name,
             'location' => $request->location
         ]);
-        return redirect()->back()->with('success', 'Centro de formación creado exitosamente');
+        return redirect()->view('trainingCenter.createSuccess', compact('trainingCenter'));
     }
 }

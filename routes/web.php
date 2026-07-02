@@ -45,3 +45,5 @@ Route::post('course/store',[CourseController::class,'store'])->name('course.stor
 
 Route::get('apprentice/create',[ApprenticeController::class,'create']);
 Route::post('apprentice/store',[ApprenticeController::class,'store'])->name('apprentice.store');
+
+

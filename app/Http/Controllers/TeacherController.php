@@ -29,6 +29,6 @@ class TeacherController extends Controller
             $teacher->courses()->attach($request->courses);
         }
         
-        return redirect()->back()->with('success', 'Profesor creado exitosamente');
+        return redirect()->view('teacher.createSuccess', compact('teacher'));
     }
 }

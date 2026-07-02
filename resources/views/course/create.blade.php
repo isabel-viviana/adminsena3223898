@@ -1,76 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>course create</title>
-</head>
-<body>
-    <h1>Formulario de curso</h1>
-    
-    <form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
+@extends('layouts.app')
 
-        @csrf
+@section('content')
 
-        <label>
-            Numero de Curso:
-            <br>
-            <input type="text" name="name_curso">
-        </label>
-        <br>
-        <label>
-            Dia:
-            <br>
-            <input type="text" name="day">
-        </label>
-        <br>
-        <br>
+<form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
 
-        <label for="area_id">area</label>
+    @csrf
 
-        <select name="area_id" id="area_id" class="form-control">
-            <option value="">Seleccione un area</option>
+    <div class="mb-3">
+        <label for="name_curso" class="form-label">Número de Curso</label>
+        <input type="text" name="name_curso" id="name_curso" class="form-control">
+    </div>
 
+    <div class="mb-3">
+        <label for="day" class="form-label">Día</label>
+        <input type="text" name="day" id="day" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="area_id" class="form-label">Área</label>
+        <select name="area_id" id="area_id" class="form-select">
+            <option value="">Seleccione un área</option>
             @foreach($areas as $area)
-                <option value="{{ $area->id }}">
-                    {{ $area->name }}
-                </option>
+                <option value="{{ $area->id }}">{{ $area->name }}</option>
             @endforeach
         </select>
-        <br>
-        <br>
+    </div>
 
-        <label for="training_centers_id">centro de formacion</label>
-
-        <select name="training_centers_id" id="training_centers_id" class="form-control">
-            <option value="">Seleccione un centro de formacion</option>
-
+    <div class="mb-3">
+        <label for="training_centers_id" class="form-label">Centro de Formación</label>
+        <select name="training_centers_id" id="training_centers_id" class="form-select">
+            <option value="">Seleccione un centro de formación</option>
             @foreach($trainingCenters as $trainingCenter)
-                <option value="{{ $trainingCenter->id }}">
-                    {{ $trainingCenter->name }}
-                </option>
+                <option value="{{ $trainingCenter->id }}">{{ $trainingCenter->name }}</option>
             @endforeach
         </select>
-        <br>
-        <br>
+    </div>
 
-        <label for="teachers">Profesores (Selecciona uno o varios):</label>
+    <button type="submit" class="btn btn-primary">Enviar Formulario</button>
+</form>
 
-        <select name="teachers[]" id="teachers" class="form-control" multiple>
-            <option value="">Seleccione profesores</option>
-
-            @foreach($teachers as $teacher)
-                <option value="{{ $teacher->id }}">
-                    {{ $teacher->nombre }} - {{ $teacher->gmail }}
-                </option>
-            @endforeach
-        </select>
-        <br>
-        <br>
-
-        <button type="submit">Enviar Formulario:</button>
-    </form>
-    
-</body>
-</html>
+@endsection

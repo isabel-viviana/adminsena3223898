@@ -28,6 +28,6 @@ class CourseController extends Controller
             $course->teachers()->attach($request->teachers);
         }
         
-        return redirect()->back()->with('success', 'Curso creado exitosamente');
+        return redirect()->view('course.createSuccess', compact('course'));
     }
 }

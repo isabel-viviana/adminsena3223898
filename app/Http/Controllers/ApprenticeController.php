@@ -33,6 +33,6 @@ class ApprenticeController extends Controller
     public function store(Request $request)
     {
         $apprentice = Apprentice::create($request->all());
-        return redirect()->back()->with('success', 'Aprendiz creado exitosamente');
+        return redirect()->view('apprentice.createSuccess',compact('apprentice'));
     }
 }

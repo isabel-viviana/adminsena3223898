@@ -27,6 +27,6 @@ class ComputerController extends Controller
             'numero' => $request->numero,
             'marca' => $request->marca
         ]);
-        return redirect()->back()->with('success', 'Computador creado exitosamente');
+        return redirect()->view('computer.createSuccess', compact('computer'));
     }
 }

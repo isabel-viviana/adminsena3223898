@@ -26,7 +26,7 @@ class AreaController extends Controller
 
     public function store(Request $request){
         $area = Area::create(['name' => $request->name]);
-        return redirect()->back()->with('success', 'Área creada exitosamente');
+        return redirect()->view('area.createSuccess',compact('area'));
     }
 
 }
