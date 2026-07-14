@@ -15,6 +15,13 @@ class ComputerController extends Controller
         'apprentices' => $computer->apprentices];
     }*/
 
+    public function index(){
+
+        $computers = Computer::all();
+        return view('computer.index',compact('computers'));
+
+    }
+
     public function create (){
 
         return view('computer.create');
@@ -27,6 +34,6 @@ class ComputerController extends Controller
             'numero' => $request->numero,
             'marca' => $request->marca
         ]);
-        return redirect()->view('computer.createSuccess', compact('computer'));
+        return redirect()->route('computer.index');
     }
 }

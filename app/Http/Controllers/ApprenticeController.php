@@ -9,6 +9,13 @@ use App\Models\Computer;
 
 class ApprenticeController extends Controller
 {
+    public function index(){
+
+        $apprentices = Apprentice::all();
+        return view('apprentice.index',compact('apprentices'));
+
+    }
+
     /*public function pruebas()
 {
     $apprentice = Apprentice::find(5);
@@ -33,6 +40,6 @@ class ApprenticeController extends Controller
     public function store(Request $request)
     {
         $apprentice = Apprentice::create($request->all());
-        return redirect()->view('apprentice.createSuccess',compact('apprentice'));
+        return redirect()->route('apprentice.index');
     }
 }

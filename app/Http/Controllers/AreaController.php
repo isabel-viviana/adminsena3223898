@@ -7,15 +7,6 @@ use App\Models\Area;
 
 class AreaController extends Controller
 {
-    /* public function pruebas(){
-    $area = Area::find(1);
-
-    return [
-        'area' => $area,
-        'courses' => $area->courses,
-        'teachers' => $area->teachers];
-    }
-    */
 
     public function create (){
 
@@ -24,9 +15,16 @@ class AreaController extends Controller
 
     }
 
+    public function index(){
+
+        $areas = Area::all();
+        return view('area.index',compact('areas'));
+
+    }
+
     public function store(Request $request){
         $area = Area::create(['name' => $request->name]);
-        return redirect()->view('area.createSuccess',compact('area'));
+        return redirect()->route('area.index');
     }
 
 }

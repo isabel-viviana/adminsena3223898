@@ -10,6 +10,13 @@ use App\Models\Course;
 
 class TeacherController extends Controller
 {
+    public function index(){
+
+        $teachers = Teacher::all();
+        return view('teacher.index',compact('teachers'));
+
+    }
+
     public function create()
     {
         $areas = Area::all();
@@ -29,6 +36,6 @@ class TeacherController extends Controller
             $teacher->courses()->attach($request->courses);
         }
         
-        return redirect()->view('teacher.createSuccess', compact('teacher'));
+        return redirect()->route('teacher.index');
     }
 }

@@ -16,6 +16,13 @@ class TrainingCenterController extends Controller
     'teacher' => $center->teacher];
     }*/
 
+    public function index(){
+
+        $trainingCenters = TrainingCenter::all();
+        return view('trainingCenter.index',compact('trainingCenters'));
+
+    }
+
     public function create (){
 
         return view('trainingCenter.create');
@@ -28,6 +35,6 @@ class TrainingCenterController extends Controller
             'name' => $request->name,
             'location' => $request->location
         ]);
-        return redirect()->view('trainingCenter.createSuccess', compact('trainingCenter'));
+        return redirect()->route('trainingCenter.index');
     }
 }
