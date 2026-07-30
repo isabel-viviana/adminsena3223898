@@ -1,0 +1,72 @@
+body {
+    background-color: #F5F6F7;
+    color: #2E2E2E;
+}
+
+.institutional-card {
+    background-color: #FFFFFF;
+    border: 1px solid #D9E2DD;
+    border-radius: 0.25rem;
+    box-shadow: none;
+}
+
+.institutional-header {
+    background-color: #39A935;
+    color: #FFFFFF;
+    border-bottom: 1px solid #D9E2DD;
+    padding: 1.25rem 1.5rem;
+}
+
+.institutional-header h4 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.institutional-header p {
+    color: #FFFFFF;
+    opacity: 0.92;
+    font-size: 0.92rem;
+}
+
+.btn-success {
+    background-color: #39A935;
+    border-color: #39A935;
+    color: #FFFFFF;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+    background-color: #2C6E31;
+    border-color: #2C6E31;
+    color: #FFFFFF;
+}
+
+.institutional-table thead th {
+    background-color: #F5F6F7;
+    color: #2E2E2E;
+    border-color: #D9E2DD;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.9rem 1rem;
+}
+
+.institutional-table td {
+    border-color: #D9E2DD;
+    padding: 0.9rem 1rem;
+    color: #2E2E2E;
+}
+
+.institutional-table tbody tr:nth-child(even) {
+    background-color: #F5F6F7;
+}
+
+.institutional-table tbody tr:hover {
+    background-color: #F5F6F7;
+}
+
+.text-secondary {
+    color: #6C757D !important;
+}

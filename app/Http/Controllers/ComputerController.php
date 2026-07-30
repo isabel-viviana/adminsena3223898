@@ -36,4 +36,26 @@ class ComputerController extends Controller
         ]);
         return redirect()->route('computer.index');
     }
+
+    public function edit(Computer $computer)
+    {
+        return view('computer.edit', compact('computer'));
+    }
+
+    public function update(Request $request, Computer $computer)
+    {
+        $computer->update([
+            'numero' => $request->numero,
+            'marca' => $request->marca
+        ]);
+
+        return redirect()->route('computer.index');
+    }
+
+    public function destroy(Computer $computer)
+    {
+        $computer->delete();
+
+        return redirect()->route('computer.index');
+    }
 }

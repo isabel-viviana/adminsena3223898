@@ -37,4 +37,34 @@ class CourseController extends Controller
         
         return redirect()->route('course.index');
     }
+
+    public function edit(Course $course)
+    {
+        $areas = Area::all();
+        $trainingCenters = TrainingCenter::all();
+        $teachers = Teacher::all();
+
+        return view('course.edit', compact('course', 'areas', 'trainingCenters', 'teachers'));
+    }
+
+    public function update(Request $request, Course $course)
+    {
+        $courseData = $request->except('teachers');
+        $course->update($courseData);
+
+        if ($request->has('teachers') && !empty($request->teachers)) {
+            $course->teachers()->sync($request->teachers);
+        } else {
+            $course->teachers()->detach();
+        }
+
+        return redirect()->route('course.index');
+    }
+
+    public function destroy(Course $course)
+    {
+        $course->delete();
+
+        return redirect()->route('course.index');
+    }
 }

@@ -16,20 +16,6 @@ class ApprenticeController extends Controller
 
     }
 
-    /*public function pruebas()
-{
-    $apprentice = Apprentice::find(5);
-    if (!$apprentice){
-        return "no existe ningun aprendiz";
-    }
-
-    return [
-        'apprentice' => $apprentice,
-        'course' => $apprentice->course,
-        'computer' => $apprentice->computer
-    ];
-}*/
-    
     public function create (){
         $courses = Course::all();
         $computers = Computer::all();
@@ -40,6 +26,28 @@ class ApprenticeController extends Controller
     public function store(Request $request)
     {
         $apprentice = Apprentice::create($request->all());
+        return redirect()->route('apprentice.index');
+    }
+
+    public function edit(Apprentice $apprentice)
+    {
+        $courses = Course::all();
+        $computers = Computer::all();
+
+        return view('apprentice.edit', compact('apprentice', 'courses', 'computers'));
+    }
+
+    public function update(Request $request, Apprentice $apprentice)
+    {
+        $apprentice->update($request->all());
+
+        return redirect()->route('apprentice.index');
+    }
+
+    public function destroy(Apprentice $apprentice)
+    {
+        $apprentice->delete();
+
         return redirect()->route('apprentice.index');
     }
 }

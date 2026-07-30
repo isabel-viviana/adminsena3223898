@@ -1,4 +1,4 @@
-<footer class="text-white" style="background: linear-gradient(135deg, #a1b7f3 0%, #7e92c9  100%);">
+<footer class="text-white" style="background: linear-gradient(135deg, #71E26B 0%, #39A900 100%);">
 
     <div class="container py-5">
         <div class="row">

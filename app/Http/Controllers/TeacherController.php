@@ -38,4 +38,34 @@ class TeacherController extends Controller
         
         return redirect()->route('teacher.index');
     }
+
+    public function edit(Teacher $teacher)
+    {
+        $areas = Area::all();
+        $trainingCenters = TrainingCenter::all();
+        $courses = Course::all();
+
+        return view('teacher.edit', compact('teacher', 'areas', 'trainingCenters', 'courses'));
+    }
+
+    public function update(Request $request, Teacher $teacher)
+    {
+        $teacherData = $request->except('courses');
+        $teacher->update($teacherData);
+
+        if ($request->has('courses') && !empty($request->courses)) {
+            $teacher->courses()->sync($request->courses);
+        } else {
+            $teacher->courses()->detach();
+        }
+
+        return redirect()->route('teacher.index');
+    }
+
+    public function destroy(Teacher $teacher)
+    {
+        $teacher->delete();
+
+        return redirect()->route('teacher.index');
+    }
 }

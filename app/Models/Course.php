@@ -34,6 +34,6 @@ class Course extends Model
         "name_curso",
         "day",
         "area_id",
-        "trainingCenter_id"
+        "training_centers_id"
     ];
 }

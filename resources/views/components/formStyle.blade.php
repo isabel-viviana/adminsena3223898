@@ -9,8 +9,8 @@
     }
 
     .form-control:focus, .form-select:focus {
-        border-color: #3A9484;
-        box-shadow: 0 0 0 0.2rem rgba(58, 148, 132, 0.1);
+        border-color: #39A900;
+        box-shadow: 0 0 0 0.2rem rgba(57, 169, 0, 0.1);
     }
 
     .form-label {
@@ -34,15 +34,15 @@
     }
 
     .btn-primary {
-        background: linear-gradient(135deg, #a1b7f3 0%, #7e92c9 100%);
+        background: linear-gradient(135deg, #71E26B 0%, #39A900 100%);
         color: white;
         border: none;
     }
 
     .btn-primary:hover {
-        background: linear-gradient(135deg, #8fa3e3 0%, #6b7eb9 100%);
+        background: linear-gradient(135deg, #8FEA86 0%, #2E8A00 100%);
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(161, 183, 243, 0.3);
+        box-shadow: 0 8px 16px rgba(57, 169, 0, 0.3);
         color: white;
     }
 
@@ -64,7 +64,7 @@
             <div class="card border-0 shadow-lg bg-white">
                 
                 @if($title ?? false)
-                    <div class="card-header text-white py-4" style="background: linear-gradient(135deg, #3A9484 0%, #478694 100%);">
+                    <div class="card-header text-white py-4" style="background: linear-gradient(135deg, #71E26B 0%, #39A900 100%);">
                         <h4 class="mb-0">{{ $title }}</h4>
                     </div>
                 @endif
