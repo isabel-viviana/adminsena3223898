@@ -16,7 +16,7 @@ class Teacher extends Model
 
     public function trainingCenter()
     {
-        return $this->belongsTo(TrainingCenter::class);
+        return $this->belongsTo(TrainingCenter::class, 'training_centers_id');
     }
 
     public function courses()

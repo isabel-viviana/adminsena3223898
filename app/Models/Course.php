@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\models\TrainingCenter;
 
 class Course extends Model
 {
     use HasFactory;
-    
+
     public function area()
     {
         return $this->belongsTo(Area::class);
@@ -17,7 +16,7 @@ class Course extends Model
 
     public function training_center()
     {
-        return $this->belongsTo(TrainingCenter::class);
+        return $this->belongsTo(TrainingCenter::class, 'training_centers_id');
     }
 
     public function apprentices()

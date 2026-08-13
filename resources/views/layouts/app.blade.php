@@ -22,13 +22,11 @@
     <!-- Navbar -->
     @include('includes.navbar')
 
-    <x-formStyle>
-        @yield('content')
-    </x-formStyle>
+    @yield('content')
 
     <!-- vista de traer los registros-->
 
-    
+
 
     @include('includes.footer')
 
