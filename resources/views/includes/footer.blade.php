@@ -1,52 +1,9 @@
-<footer class="text-white" style="background: linear-gradient(135deg, #71E26B 0%, #39A900 100%);">
-
-    <div class="container py-5">
-        <div class="row">
-            
-
-            <div class="col-md-4 mb-4 mb-md-0">
-                <h5 class="fw-bold mb-3">Sobre Nosotros</h5>
-                <p class="small">Somos una institución dedicada a la formación y capacitación de aprendices y profesionales en diferentes áreas técnicas.</p>
-                <p class="small"><strong>Email:</strong> info@adminsena.com</p>
-                <p class="small"><strong>Teléfono:</strong> +57 1 234 5678</p>
-            </div>
-
-            <div class="col-md-4 mb-4 mb-md-0">
-                <h5 class="fw-bold mb-3">Enlaces Rápidos</h5>
-                <ul class="list-unstyled small">
-                    <li><a href="#" class="text-white text-decoration-none">Inicio</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Cursos</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Aprendices</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Profesores</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h5 class="fw-bold mb-3">Legal</h5>
-                <ul class="list-unstyled small">
-                    <li><a href="#" class="text-white text-decoration-none">Política de Privacidad</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Términos de Servicio</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Contacto</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Mapa del Sitio</a></li>
-                </ul>
-            </div>
-
-        </div>
+<footer id="contacto" class="sena-footer">
+    <div class="sena-footer__grid container">
+        <div class="sena-footer__intro"><img src="{{ asset('assets/png-clipart-logo-sena-la-granja-leaf-text.png') }}" alt="Logo SENA"><p>Formación profesional integral para el trabajo, el desarrollo humano y la transformación del país.</p></div>
+        <div><p class="footer-label">Actualidad</p><a href="#">Noticias</a><a href="#">Eventos</a><a href="#">Convocatorias</a></div>
+        <div><p class="footer-label">Enlaces</p><a href="{{ url('/#conocenos') }}">¿Quiénes somos?</a><a href="{{ route('login') }}">Acceso administrativo</a><a href="#contacto">Contáctanos</a></div>
+        <div><p class="footer-label">Conversemos</p><p class="footer-contact">Bogotá D.C., Colombia<br>atencionalciudadano@sena.edu.co<br>+57 601 546 1500</p><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="X"><i class="fab fa-twitter"></i></a></div></div>
     </div>
-
-    <!-- Línea Divisoria -->
-    <hr class="my-0 opacity-25">
-
-    <!-- Pie de Página -->
-    <div class="container py-3">
-        <div class="row align-items-center">
-            <div class="col-md-8 text-center text-md-start">
-                <p class="mb-0 small">© 2026 AdminSENA. Todos los derechos reservados.</p>
-            </div>
-            <div class="col-md-4 text-center text-md-end">
-                <p class="mb-0 small">Diseñado con <span style="color: #ff6b6b;">♥</span> por AdminSENA</p>
-            </div>
-        </div>
-    </div>
-
+    <div class="sena-footer__bottom container"><span>© 2026 SENA · Todos los derechos reservados</span><span>Servicio Nacional de Aprendizaje</span></div>
 </footer>

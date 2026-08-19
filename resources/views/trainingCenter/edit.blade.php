@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('trainingCenter.update', $trainingCenter->id) }}" method="POST">
+<form class="module-form" data-form-title="Editar centro de formación" action="{{ route('trainingCenter.update', $trainingCenter->id) }}" method="POST">
 
     @csrf
     @method('PUT')

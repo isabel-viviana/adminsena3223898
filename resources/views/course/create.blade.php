@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
+<form class="module-form" data-form-title="Registrar curso" action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
 
     @csrf
 

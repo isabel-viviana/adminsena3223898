@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('computer.update', $computer->id) }}" method="POST">
+<form class="module-form" data-form-title="Editar computador" action="{{ route('computer.update', $computer->id) }}" method="POST">
 
     @csrf
     @method('PUT')

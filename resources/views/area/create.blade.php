@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('area.store')}}" method="POST" enctype="multipart/form-data">
+<form class="module-form" data-form-title="Registrar área" action="{{route('area.store')}}" method="POST" enctype="multipart/form-data">
 
     @csrf
 

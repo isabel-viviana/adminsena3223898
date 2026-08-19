@@ -9,9 +9,9 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ApprenticeController;
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', function () {return view('dashboard');});
+
+Route::get('/login', function () {return view('auth.login');})->name('login');
 
 Route::get('/area',[AreaController::class,'index'])->name('area.index');
 Route::get('area/create',[AreaController::class,'create'])->name('area.create');

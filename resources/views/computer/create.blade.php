@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('computer.store')}}" method="POST" enctype="multipart/form-data">
+<form class="module-form" data-form-title="Registrar computador" action="{{route('computer.store')}}" method="POST" enctype="multipart/form-data">
 
     @csrf
 

@@ -1,19 +1,13 @@
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>administrador sena</title>
+    <title>SENA | Formación que transforma</title>
 
     @include('includes.dependencias')
-
-    <style>
-        body {
-            background-color: #ffffff;
-            min-height: 100vh;
-        }
-    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 
@@ -31,6 +25,7 @@
     @include('includes.footer')
 
     @include('includes.dependenciasBody')
+    @stack('scripts')
 
 
 </body>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('apprentice.update', $apprentice->id) }}" method="POST" enctype="multipart/form-data">
+<form class="module-form" data-form-title="Editar aprendiz" action="{{ route('apprentice.update', $apprentice->id) }}" method="POST" enctype="multipart/form-data">
 
     @csrf
     @method('PUT')

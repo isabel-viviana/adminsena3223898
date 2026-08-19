@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
+<form class="module-form" data-form-title="Registrar docente" action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
 
     @csrf
 

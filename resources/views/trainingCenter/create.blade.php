@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('trainingCenter.store')}}" method="POST" enctype="multipart/form-data">
+<form class="module-form" data-form-title="Registrar centro de formación" action="{{route('trainingCenter.store')}}" method="POST" enctype="multipart/form-data">
 
     @csrf
 

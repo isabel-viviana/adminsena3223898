@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('area.update', $area->id) }}" method="POST">
+<form class="module-form" data-form-title="Editar área" action="{{ route('area.update', $area->id) }}" method="POST">
 
     @csrf
     @method('PUT')
