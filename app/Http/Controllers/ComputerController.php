@@ -7,14 +7,6 @@ use App\Models\Computer;
 
 class ComputerController extends Controller
 {
-    /*public function pruebas(){
-    $computer = Computer::find(1);
-
-    return [
-        'computer' => $computer,
-        'apprentices' => $computer->apprentices];
-    }*/
-
     public function index(){
 
         $computers = Computer::all();

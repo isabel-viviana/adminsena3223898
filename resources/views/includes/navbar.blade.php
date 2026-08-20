@@ -22,9 +22,9 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/#contacto') }}">Contáctanos</a></li>
                 <li class="nav-item"><button class="nav-search" type="button" data-search-trigger aria-label="Buscar"><i class="fas fa-search" aria-hidden="true"></i><span>Buscar</span></button></li>
-                <li class="nav-item sena-profile"><span class="profile-avatar"><i class="fas fa-user" aria-hidden="true"></i></span><span class="profile-copy"><small>Visitante</small><strong>Sin iniciar sesión</strong></span><a class="sena-login-link" href="{{ route('login') }}">Iniciar sesión</a></li>
+                <li class="nav-item sena-profile"><span class="profile-avatar"><i class="fas fa-user" aria-hidden="true"></i></span><span class="profile-copy"><small>Visitante</small><strong>Administración pública</strong></span></li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="search-drawer" data-search-drawer aria-hidden="true"><div class="search-drawer__inner"><label for="site-search">¿Qué estás buscando?</label><div><input id="site-search" type="search" placeholder="Buscar en el portal"><button type="button" data-search-close aria-label="Cerrar búsqueda"><i class="fas fa-times"></i></button></div><small>Buscador de demostración: esta consulta es solo visual.</small></div></div>
+<div class="search-drawer" data-search-drawer aria-hidden="true"><div class="search-drawer__inner"><label for="site-search">¿Qué estás buscando?</label><div><input id="site-search" type="search" placeholder="Buscar en el portal"><button type="button" data-search-close aria-label="Cerrar búsqueda"><i class="fas fa-times"></i></button></div></div></div>

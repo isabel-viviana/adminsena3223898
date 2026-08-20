@@ -19,7 +19,6 @@
                 <p class="eyebrow">En el SENA</p>
                 <h2 id="carousel-title">Historias que inspiran</h2>
             </div>
-            <p class="ratio-note">Formato recomendado: 16:6 · 2.67:1</p>
         </div>
         <div id="homeCarousel" class="carousel slide sena-carousel" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -28,9 +27,9 @@
                 <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Historia tres"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active"><div class="carousel-placeholder"><i class="fas fa-image" aria-hidden="true"></i><span>Imagen horizontal pendiente</span></div></div>
-                <div class="carousel-item"><div class="carousel-placeholder"><i class="fas fa-image" aria-hidden="true"></i><span>Imagen horizontal pendiente</span></div></div>
-                <div class="carousel-item"><div class="carousel-placeholder"><i class="fas fa-image" aria-hidden="true"></i><span>Imagen horizontal pendiente</span></div></div>
+                <div class="carousel-item active"><img src="{{ asset('assets/image01.png') }}" alt="Historia uno" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="carousel-item"><img src="{{ asset('assets/image02.png') }}" alt="Historia dos" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="carousel-item"><img src="{{ asset('assets/image03.png') }}" alt="Historia tres" style="width: 100%; height: 100%; object-fit: cover;"></div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span></button>
             <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span></button>

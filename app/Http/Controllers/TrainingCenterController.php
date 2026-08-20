@@ -7,15 +7,6 @@ use App\Models\TrainingCenter;
 
 class TrainingCenterController extends Controller
 {
-    /*public function pruebas(){
-    $center = TrainingCenter::find(1);
-
-    return [
-    'training_center' => $center,
-    'course' => $center->course,
-    'teacher' => $center->teacher];
-    }*/
-
     public function index(){
 
         $trainingCenters = TrainingCenter::all();

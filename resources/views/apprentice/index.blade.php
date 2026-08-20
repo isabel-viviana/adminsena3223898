@@ -17,7 +17,9 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
-                                <th>Celular</th>                                <th>Acciones</th>                            </tr>
+                                <th>Celular</th>                                
+                                <th>Acciones</th>                            
+                                </tr>
                         </thead>
 
                         <tbody>
