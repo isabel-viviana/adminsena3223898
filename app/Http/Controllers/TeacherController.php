@@ -10,9 +10,21 @@ use App\Models\Course;
 
 class TeacherController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-        $teachers = Teacher::all();
+        $query = trim($request->query('q', ''));
+
+        $teachers = Teacher::query()
+            ->when($query !== '', function ($builder) use ($query) {
+                $builder->where(function ($builder) use ($query) {
+                    $builder->where('name', 'like', "%{$query}%")
+                        ->orWhere('email', 'like', "%{$query}%");
+                });
+            })
+            ->orderBy('id')
+            ->paginate(10)
+            ->withQueryString();
+
         return view('teacher.index',compact('teachers'));
 
     }

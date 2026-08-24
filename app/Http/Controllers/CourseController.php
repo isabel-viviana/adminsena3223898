@@ -10,9 +10,24 @@ use App\Models\Teacher;
 
 class CourseController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-        $courses = Course::all();
+        $query = trim($request->query('q', ''));
+
+        $courses = Course::query()
+            ->with(['area', 'training_center'])
+            ->when($query !== '', function ($builder) use ($query) {
+                $builder->where(function ($builder) use ($query) {
+                    $builder->where('name_curso', 'like', "%{$query}%")
+                        ->orWhere('day', 'like', "%{$query}%")
+                        ->orWhere('description', 'like', "%{$query}%")
+                        ->orWhere('level', 'like', "%{$query}%");
+                });
+            })
+            ->orderBy('id')
+            ->paginate(10)
+            ->withQueryString();
+
         return view('course.index',compact('courses'));
 
     }
@@ -27,7 +42,18 @@ class CourseController extends Controller
 
     public function store(Request $request)
     {
-        $courseData = $request->except('teachers');
+        $courseData = $request->validate([
+            'name_curso' => ['required', 'string', 'max:255'],
+            'day' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'level' => ['required', 'in:Tecnico,Tecnologo,Complementario'],
+            'duration' => ['required', 'integer', 'min:1', 'max:65535'],
+            'area_id' => ['required', 'exists:areas,id'],
+            'training_centers_id' => ['required', 'exists:training_centers,id'],
+            'teachers' => ['nullable', 'array'],
+            'teachers.*' => ['integer', 'exists:teachers,id'],
+        ]);
+        unset($courseData['teachers']);
         $course = Course::create($courseData);
         
         // Asignar profesores a través de la tabla intermedia
@@ -49,7 +75,18 @@ class CourseController extends Controller
 
     public function update(Request $request, Course $course)
     {
-        $courseData = $request->except('teachers');
+        $courseData = $request->validate([
+            'name_curso' => ['required', 'string', 'max:255'],
+            'day' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'level' => ['required', 'in:Tecnico,Tecnologo,Complementario'],
+            'duration' => ['required', 'integer', 'min:1', 'max:65535'],
+            'area_id' => ['required', 'exists:areas,id'],
+            'training_centers_id' => ['required', 'exists:training_centers,id'],
+            'teachers' => ['nullable', 'array'],
+            'teachers.*' => ['integer', 'exists:teachers,id'],
+        ]);
+        unset($courseData['teachers']);
         $course->update($courseData);
 
         if ($request->has('teachers') && !empty($request->teachers)) {

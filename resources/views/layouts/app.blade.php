@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body class="{{ request()->routeIs('home') ? 'home-body' : 'app-body' }}">
 
     <!-- Navbar -->
     @include('includes.navbar')

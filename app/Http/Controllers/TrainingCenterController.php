@@ -7,9 +7,21 @@ use App\Models\TrainingCenter;
 
 class TrainingCenterController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-        $trainingCenters = TrainingCenter::all();
+        $query = trim($request->query('q', ''));
+
+        $trainingCenters = TrainingCenter::query()
+            ->when($query !== '', function ($builder) use ($query) {
+                $builder->where(function ($builder) use ($query) {
+                    $builder->where('name', 'like', "%{$query}%")
+                        ->orWhere('location', 'like', "%{$query}%");
+                });
+            })
+            ->orderBy('id')
+            ->paginate(10)
+            ->withQueryString();
+
         return view('trainingCenter.index',compact('trainingCenters'));
 
     }

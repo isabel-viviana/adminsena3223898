@@ -7,7 +7,7 @@
         <div class="col-lg-10 col-md-12">
             <div class="card border-0 shadow-lg bg-white">
                 <div class="card-header text-white py-4" style="background: linear-gradient(135deg, #39A900 0%, #39A900 100%);">
-                    <h4 class="mb-0">Listado de Computadores</h4>
+                    <div class="module-heading"><span class="module-heading__icon"><i class="fas fa-desktop" aria-hidden="true"></i></span><div><p class="module-heading__crumb">Administración / Recursos</p><h4 class="mb-0">Listado de Computadores</h4><p class="module-heading__subtitle">Controla el inventario tecnológico.</p></div></div>
                 </div>
                 <div class="card-body p-5">
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
@@ -15,7 +15,13 @@
                             <h5 class="mb-1">Registro de computadores</h5>
                             <p class="text-secondary mb-0">Consulta y administra los equipos disponibles.</p>
                         </div>
-                        <a href="{{ route('computer.create') }}" class="btn btn-primary">Registrar nuevo</a>
+                        <div class="d-flex flex-column flex-sm-row gap-2">
+                            <form action="{{ route('computer.index') }}" method="GET" class="d-flex gap-2">
+                                <input type="search" name="q" value="{{ request('q') }}" class="form-control" placeholder="Buscar por número o marca" aria-label="Buscar computadores">
+                                <button type="submit" class="btn btn-success">Buscar</button>
+                            </form>
+                            <a href="{{ route('computer.create') }}" class="btn btn-primary">Registrar nuevo</a>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -45,8 +51,16 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @if($computers->isEmpty())
+                                    <tr>
+                                        <td colspan="4" class="text-center">No se encontraron resultados.</td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
+                        <div class="mt-4">
+                            {{ $computers->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

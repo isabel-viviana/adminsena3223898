@@ -13,9 +13,18 @@ class AreaController extends Controller
         return view('area.create');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $areas = Area::all();
+        $query = trim($request->query('q', ''));
+
+        $areas = Area::query()
+            ->when($query !== '', function ($builder) use ($query) {
+                $builder->where('name', 'like', "%{$query}%");
+            })
+            ->orderBy('id')
+            ->paginate(10)
+            ->withQueryString();
+
         return view('area.index', compact('areas'));
     }
 

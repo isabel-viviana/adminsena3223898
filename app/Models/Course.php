@@ -32,6 +32,9 @@ class Course extends Model
     protected $fillable = [
         "name_curso",
         "day",
+        "description",
+        "level",
+        "duration",
         "area_id",
         "training_centers_id"
     ];

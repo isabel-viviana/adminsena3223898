@@ -9,9 +9,23 @@ use App\Models\Computer;
 
 class ApprenticeController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-        $apprentices = Apprentice::all();
+        $query = trim($request->query('q', ''));
+
+        $apprentices = Apprentice::query()
+            ->when($query !== '', function ($builder) use ($query) {
+                $builder->where(function ($builder) use ($query) {
+                    $builder->where('id', 'like', "%{$query}%")
+                        ->orWhere('name_apren', 'like', "%{$query}%")
+                        ->orWhere('email', 'like', "%{$query}%")
+                        ->orWhere('cell', 'like', "%{$query}%");
+                });
+            })
+            ->orderBy('id')
+            ->paginate(10)
+            ->withQueryString();
+
         return view('apprentice.index',compact('apprentices'));
 
     }

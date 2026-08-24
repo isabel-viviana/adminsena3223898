@@ -7,7 +7,7 @@
         <div class="col-lg-8 col-md-10">
             <div class="card border-0 shadow-lg bg-white">
                 <div class="card-header text-white py-4" style="background: linear-gradient(135deg, #39A900 0%, #39A900 100%);">
-                    <h4 class="mb-0">Listado de Docentes</h4>
+                    <div class="module-heading"><span class="module-heading__icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span><div><p class="module-heading__crumb">Administración / Personas</p><h4 class="mb-0">Listado de Docentes</h4><p class="module-heading__subtitle">Gestiona el equipo de formación.</p></div></div>
                 </div>
                 <div class="card-body p-5">
                     <a href="{{ route('teacher.create') }}" class="btn btn-primary mb-4">Registrar nuevo</a>

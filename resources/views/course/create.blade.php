@@ -2,18 +2,38 @@
 
 @section('content')
 
-<form class="module-form" data-form-title="Registrar curso" action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
+<form class="module-form" data-form-title="Registrar programa de formación" action="{{ route('course.store') }}" method="POST">
 
     @csrf
 
     <div class="mb-3">
-        <label for="name_curso" class="form-label">Número de Curso</label>
-        <input type="text" name="name_curso" id="name_curso" class="form-control">
+        <label for="name_curso" class="form-label">Nombre del programa</label>
+        <input type="text" name="name_curso" id="name_curso" class="form-control" value="{{ old('name_curso') }}" required>
     </div>
 
     <div class="mb-3">
         <label for="day" class="form-label">Día</label>
-        <input type="text" name="day" id="day" class="form-control">
+        <input type="text" name="day" id="day" class="form-control" value="{{ old('day') }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Descripción</label>
+        <textarea name="description" id="description" class="form-control" rows="4">{{ old('description') }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="level" class="form-label">Nivel</label>
+        <select name="level" id="level" class="form-select" required>
+            <option value="">Seleccione un nivel</option>
+            <option value="Tecnico" {{ old('level') === 'Tecnico' ? 'selected' : '' }}>Técnico</option>
+            <option value="Tecnologo" {{ old('level') === 'Tecnologo' ? 'selected' : '' }}>Tecnólogo</option>
+            <option value="Complementario" {{ old('level') === 'Complementario' ? 'selected' : '' }}>Complementario</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="duration" class="form-label">Duración (meses)</label>
+        <input type="number" name="duration" id="duration" class="form-control" min="1" max="65535" value="{{ old('duration') }}" required>
     </div>
 
     <div class="mb-3">
