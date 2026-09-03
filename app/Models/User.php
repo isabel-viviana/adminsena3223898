@@ -19,4 +19,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function persona()
+    {
+        return $this->hasOne(Persona::class, 'user_id');
+    }
+
+    public function inscripciones()
+    {
+        return $this->hasMany(Inscripcion::class, 'user_id');
+    }
 }

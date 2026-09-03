@@ -12,6 +12,7 @@ class Inscripcion extends Model
     protected $table = 'inscripciones';
 
     protected $fillable = [
+        'persona_id',
         'user_id',
         'convocatoria_id',
         'status',
@@ -27,8 +28,18 @@ class Inscripcion extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
+
     public function convocatoria()
     {
         return $this->belongsTo(Convocatoria::class);
+    }
+
+    public function apprentice()
+    {
+        return $this->hasOne(Apprentice::class, 'inscripcion_id');
     }
 }

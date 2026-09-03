@@ -24,8 +24,21 @@ class Teacher extends Model
         return $this->belongsToMany(Course::class, 'course_teachers');
     }
 
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
+
+    public function convocatorias()
+    {
+        return $this->hasMany(Convocatoria::class, 'teacher_id');
+    }
+
     protected $fillable = [
+        "persona_id",
         "name",
+        "codigo_instructor",
+        "especialidad",
         "email",
         "area_id",
         "training_centers_id"

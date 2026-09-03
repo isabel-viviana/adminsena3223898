@@ -29,8 +29,37 @@ class Course extends Model
         return $this->belongsToMany(Teacher::class, 'course_teachers');
     }
 
+    public function nivelFormacion()
+    {
+        return $this->belongsTo(NivelFormacion::class, 'nivel_id');
+    }
+
+    public function convocatorias()
+    {
+        return $this->hasMany(Convocatoria::class, 'course_id');
+    }
+
+    public function getLevelAttribute($value)
+    {
+        return $value ?? $this->nivelFormacion?->nombre;
+    }
+
+    public function setLevelAttribute($value)
+    {
+        $this->attributes['level'] = $value;
+        $nivel = NivelFormacion::where('nombre', $value)->first();
+        if ($nivel) {
+            $this->attributes['nivel_id'] = $nivel->id;
+        }
+    }
+
     protected $fillable = [
         "name_curso",
+        "codigo_programa",
+        "nivel_id",
+        "version_programa",
+        "duracion_horas_totales",
+        "perfil_ingreso",
         "day",
         "description",
         "level",
