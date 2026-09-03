@@ -181,6 +181,46 @@ a { color: inherit; }
 .login-note i { color: var(--sena-green); margin-right: 5px; }
 @media (max-width: 760px) { .login-page { display: block; } .login-intro { min-height: 430px; padding: 64px 24px; } .login-intro::before { width: 300px; height: 300px; right: -150px; } .login-stamp { margin-top: 44px; } .login-panel { max-width: none; padding: 42px 24px 64px; } .login-panel__heading { margin-top: 48px; } }
 
+/* Institutional navigation and footer. */
+.sena-navbar {
+	position: sticky;
+	top: 0;
+	background: linear-gradient(110deg, rgba(0,79,29,.94), rgba(0,106,38,.94));
+	border-bottom: 1px solid rgba(183,224,0,.22);
+	box-shadow: 0 8px 24px rgba(0,79,29,.12);
+	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
+}
+.sena-navbar__inner { min-height: 78px; }
+.sena-brand, .sena-navbar .nav-link, .nav-search { color: #F8FAFA; }
+.sena-brand img { filter: drop-shadow(0 4px 8px rgba(0,0,0,.16)); }
+.sena-brand small, .profile-copy small { color: #D7E2DA; }
+.sena-navbar .nav-link, .nav-search { position: relative; transition: color .25s ease, transform .25s ease; }
+.sena-navbar .nav-link::after, .nav-search::after { position: absolute; content: ''; left: .8rem; right: .8rem; bottom: .35rem; height: 2px; background: #B7E000; transform: scaleX(0); transform-origin: center; transition: transform .25s ease; }
+.sena-navbar .nav-link:hover, .nav-search:hover { color: #B7E000; transform: translateY(-1px); }
+.sena-navbar .nav-link:hover::after, .nav-search:hover::after { transform: scaleX(1); }
+.sena-profile { border-left-color: rgba(215,226,218,.28); }
+.profile-avatar { background: rgba(248,250,250,.16); color: #F8FAFA; }
+.profile-copy strong { color: #F8FAFA; }
+.sena-navbar form { margin: 0; }
+.sena-navbar form .nav-link { color: #F8FAFA; }
+.dropdown-menu { border: 1px solid rgba(0,106,38,.24); border-radius: 12px; box-shadow: 0 14px 30px rgba(0,79,29,.16); }
+.dropdown-item { color: #004F1D; border-radius: 8px; transition: background-color .25s ease, color .25s ease; }
+.dropdown-item i { color: #00852F; }
+.dropdown-item:hover { background: #D7E2DA; color: #004F1D; }
+.sena-footer { position: relative; background: #004F1D; color: #D7E2DA; padding: 78px 0 0; }
+.sena-footer::before { position: absolute; content: ''; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, #00852F, #B7E000, #006A26); }
+.sena-footer__grid { gap: 54px; padding-bottom: 64px; }
+.sena-footer__intro img { width: 64px; height: 64px; margin-bottom: 22px; }
+.footer-system-name { color: #F8FAFA; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem !important; font-weight: 700; margin-bottom: 8px !important; }
+.sena-footer p, .sena-footer a, .footer-contact { color: #D7E2DA; }
+.footer-label { color: #B7E000; }
+.sena-footer a { transition: color .25s ease, transform .25s ease; }
+.sena-footer a:hover { color: #B7E000; transform: translateX(3px); }
+.footer-socials a { border-color: rgba(215,226,218,.4); color: #F8FAFA !important; transition: background-color .25s ease, border-color .25s ease, transform .25s ease; }
+.footer-socials a:hover { background: #00852F; border-color: #B7E000; transform: translateY(-2px); }
+.sena-footer__bottom { border-top-color: rgba(215,226,218,.22); color: #D7E2DA; }
+
 /* Premium visual layer for authenticated and administrative surfaces. */
 .app-body {
 	--ui-green: #16a34a;
