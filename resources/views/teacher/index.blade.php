@@ -25,6 +25,13 @@
                                     <td>{{ $teacher->id }}</td>
                                     <td>{{ $teacher->name }}</td>
                                     <td>{{ $teacher->email }}</td>
+                                    <td><img
+                                        src="{{ asset('storage/images/' . $teacher->urlFoto) }}"
+                                        alt="Imagen del producto"
+                                        width="80"
+                                        height="80"
+                                        style="object-fit: cover; border-radius: 5px;">
+                                    </td>
                                     <td>
                                         <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                         <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST" class="d-inline">

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form class="module-form" data-form-title="Registrar programa de formación" action="{{ route('course.store') }}" method="POST">
+<form class="module-form" data-form-title="Registrar programa de formación" action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
 
     @csrf
 
@@ -54,6 +54,12 @@
                 <option value="{{ $trainingCenter->id }}">{{ $trainingCenter->name }}</option>
             @endforeach
         </select>
+
+        <br>
+        <input type="text" name="marca" id="marca" class="form-control">
+        <br>
+        <input type="file" name="urlFoto" class="form-control-file" accept="image/*">
+
     </div>
 
     <button type="submit" class="btn btn-primary">Enviar Formulario</button>

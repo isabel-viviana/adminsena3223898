@@ -31,6 +31,7 @@
                                     <th>ID</th>
                                     <th>Número</th>
                                     <th>Marca</th>
+                                    <th>Imagen</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,12 @@
                                         <td>{{ $computer->id }}</td>
                                         <td>{{ $computer->numero }}</td>
                                         <td>{{ $computer->marca }}</td>
+                                        <td><img
+                                            src="{{ asset('storage/images/' . $computer->urlFoto) }}"
+                                            alt="Imagen del producto"
+                                            width="80"
+                                            height="80"
+                                            style="object-fit: cover; border-radius: 5px;">               </td>
                                         <td>
                                             <a href="{{ route('computer.edit', $computer->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                             <form action="{{ route('computer.destroy', $computer->id) }}" method="POST" class="d-inline">
@@ -53,7 +60,7 @@
                                 @endforeach
                                 @if($computers->isEmpty())
                                     <tr>
-                                        <td colspan="4" class="text-center">No se encontraron resultados.</td>
+                                        <td colspan="5" class="text-center">No se encontraron resultados.</td>
                                     </tr>
                                 @endif
                             </tbody>

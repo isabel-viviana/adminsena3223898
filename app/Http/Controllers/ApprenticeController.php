@@ -40,6 +40,16 @@ class ApprenticeController extends Controller
     public function store(Request $request)
     {
         $apprentice = Apprentice::create($request->all());
+        $file=$request->file("urlFoto");
+
+        if ($file) {
+            $nombreArchivo = "foto_".time().".".$file->guessExtension();
+            $request->file('urlFoto')->storeAs('public/images', $nombreArchivo );
+
+            $apprentice->urlFoto = $nombreArchivo;
+            $apprentice->save();
+        }
+
         return redirect()->route('apprentice.index');
     }
 

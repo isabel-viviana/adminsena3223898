@@ -38,6 +38,18 @@ class ComputerController extends Controller
             'numero' => $request->numero,
             'marca' => $request->marca
         ]);
+
+        //ADJUNTAR
+        $file=$request->file("urlFoto");
+
+        if ($file) {
+            $nombreArchivo = "foto_".time().".".$file->guessExtension();
+            $request->file('urlFoto')->storeAs('public/images', $nombreArchivo );
+
+            $computer->urlFoto = $nombreArchivo;
+            $computer->save();
+        }
+         
         return redirect()->route('computer.index');
     }
 

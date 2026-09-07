@@ -60,6 +60,16 @@ class CourseController extends Controller
         if ($request->has('teachers') && !empty($request->teachers)) {
             $course->teachers()->attach($request->teachers);
         }
+
+        $file=$request->file("urlFoto");
+
+        if ($file) {
+            $nombreArchivo = "foto_".time().".".$file->guessExtension();
+            $request->file('urlFoto')->storeAs('public/images', $nombreArchivo );
+
+            $course->urlFoto = $nombreArchivo;
+            $course->save();
+        }
         
         return redirect()->route('course.index');
     }

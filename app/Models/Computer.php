@@ -17,4 +17,8 @@ class Computer extends Model
         "numero",
         "marca",
     ];
+    
+    protected $guarded = [
+        'urlFoto'
+    ];
 }

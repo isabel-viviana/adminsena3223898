@@ -13,10 +13,15 @@
 
     <div class="mb-3">
         <label for="marca" class="form-label">Marca</label>
+        <br>
         <input type="text" name="marca" id="marca" class="form-control">
+        <br>
+        <input type="file" name="urlFoto" class="form-control-file" accept="image/*">
+
     </div>
 
     <button type="submit" class="btn btn-primary">Enviar Formulario</button>
+    
 </form>
 
 @endsection

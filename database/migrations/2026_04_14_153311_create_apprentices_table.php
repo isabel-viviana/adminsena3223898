@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name_apren');
             $table->string('email')->unique(); 
             $table->string('cell');
+            $table->string('urlFoto')->nullable();
 
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->foreignId('computer_id')->constrained()->onDelete('cascade');

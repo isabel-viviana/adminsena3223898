@@ -29,6 +29,12 @@
                                     <td>{{ $apprentice->name_apren }}</td>
                                     <td>{{ $apprentice->email }}</td>
                                     <td>{{ $apprentice->cell }}</td>
+                                    <td><img
+                                        src="{{ asset('storage/images/' . $apprentice->urlFoto) }}"
+                                        alt="Imagen del producto"
+                                        width="80"
+                                        height="80"
+                                        style="object-fit: cover; border-radius: 5px;">
                                     <td>
                                         <a href="{{ route('apprentice.edit', $apprentice->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                         <form action="{{ route('apprentice.destroy', $apprentice->id) }}" method="POST" class="d-inline">

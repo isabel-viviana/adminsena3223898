@@ -47,6 +47,16 @@ class TeacherController extends Controller
         if ($request->has('courses') && !empty($request->courses)) {
             $teacher->courses()->attach($request->courses);
         }
+
+        $file=$request->file("urlFoto");
+
+        if ($file) {
+            $nombreArchivo = "foto_".time().".".$file->guessExtension();
+            $request->file('urlFoto')->storeAs('public/images', $nombreArchivo );
+
+            $teacher->urlFoto = $nombreArchivo;
+            $teacher->save();
+        }
         
         return redirect()->route('teacher.index');
     }

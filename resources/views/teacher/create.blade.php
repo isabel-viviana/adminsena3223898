@@ -44,6 +44,12 @@
                 <option value="{{ $course->id }}">{{ $course->name_curso }} - {{ $course->day }}</option>
             @endforeach
         </select>
+
+            <br>
+        <input type="text" name="marca" id="marca" class="form-control">
+        <br>
+        <input type="file" name="urlFoto" class="form-control-file" accept="image/*">
+
     </div>
 
     <button type="submit" class="btn btn-primary">Enviar Formulario</button>

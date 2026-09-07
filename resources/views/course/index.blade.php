@@ -33,6 +33,13 @@
                                     <td>{{ $course->training_center->name }}</td>
                                     <td>{{ $course->level }}</td>
                                     <td>{{ $course->duration }} meses</td>
+                                    <td><img
+                                            src="{{ asset('storage/images/' . $course->urlFoto) }}"
+                                            alt="Imagen del producto"
+                                            width="80"
+                                            height="80"
+                                            style="object-fit: cover; border-radius: 5px;">
+                                    </td>
                                     <td>
                                         <a href="{{ route('course.edit', $course->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                         <form action="{{ route('course.destroy', $course->id) }}" method="POST" class="d-inline">
