@@ -4,6 +4,16 @@
 <form class="module-form" data-form-title="Crear convocatoria" action="{{ route('convocatoria.store') }}" method="POST">
     @csrf
 
+    @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="mb-3">
         <label for="course_id" class="form-label">Programa de Formación</label>
         <select name="course_id" id="course_id" class="form-select" required>

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\Course;
-use App\Models\Teacher;
+use App\Models\Academic\Course;
+use App\Models\People\Teacher;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase

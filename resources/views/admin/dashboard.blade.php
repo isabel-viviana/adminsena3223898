@@ -2,11 +2,11 @@
 
 @section('content')
 @php
-    $adminPrograms = \App\Models\Course::count();
-    $adminOpenCalls = \App\Models\Convocatoria::where('status', 'Abierta')->count();
-    $adminEnrolled = \App\Models\Inscripcion::where('status', 'Inscrito')->distinct('user_id')->count('user_id');
-    $adminOccupied = \App\Models\Inscripcion::where('status', 'Inscrito')->count();
-    $adminRecentCalls = \App\Models\Convocatoria::with(['course', 'trainingCenter'])->latest('created_at')->take(5)->get();
+    $adminPrograms = \App\Models\Academic\Course::count();
+    $adminOpenCalls = \App\Models\Academic\Intake::where('status', 'Abierta')->count();
+    $adminEnrolled = \App\Models\Academic\Enrollment::where('status', 'Inscrito')->distinct('persona_id')->count('persona_id');
+    $adminOccupied = \App\Models\Academic\Enrollment::where('status', 'Inscrito')->count();
+    $adminRecentCalls = \App\Models\Academic\Intake::with(['course', 'trainingCenter'])->latest('created_at')->take(5)->get();
 @endphp
 <main class="container py-5">
     <div class="section-heading">

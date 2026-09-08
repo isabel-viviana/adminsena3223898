@@ -3,17 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\AreaController;
-use App\Http\Controllers\ComputerController;
-use App\Http\Controllers\TrainingCenterController;
-use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\ApprenticeController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\PortalController;
-use App\Http\Controllers\ConvocatoriaController;
-use App\Http\Controllers\InscripcionController;
+use App\Http\Controllers\Admin\AreaController;
+use App\Http\Controllers\Resource\ComputerController;
+use App\Http\Controllers\Admin\TrainingCenterController;
+use App\Http\Controllers\People\TeacherController;
+use App\Http\Controllers\Admin\CourseController;
+
+use App\Http\Controllers\System\AuthController;
+use App\Http\Controllers\System\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Apprentice\PortalController;
+use App\Http\Controllers\System\PortalController as ApprenticePortalController;
+use App\Http\Controllers\Admin\IntakeController as ConvocatoriaController;
+use App\Http\Controllers\Aspirant\EnrollmentController as InscripcionController;
 
 Route::get('/', function (Request $request) {
 	$query = trim((string) $request->query('q', ''));
@@ -89,12 +90,12 @@ Route::get('course/edit/{course}',[CourseController::class,'edit'])->name('cours
 Route::put('course/update/{course}',[CourseController::class,'update'])->name('course.update');
 Route::delete('course/delete/{course}',[CourseController::class,'destroy'])->name('course.destroy');
 
-Route::get('/apprentice',[ApprenticeController::class,'index'])->name('apprentice.index');
-Route::get('apprentice/create',[ApprenticeController::class,'create'])->name('apprentice.create');
-Route::post('apprentice/store',[ApprenticeController::class,'store'])->name('apprentice.store');
-Route::get('apprentice/edit/{apprentice}',[ApprenticeController::class,'edit'])->name('apprentice.edit');
-Route::put('apprentice/update/{apprentice}',[ApprenticeController::class,'update'])->name('apprentice.update');
-Route::delete('apprentice/delete/{apprentice}',[ApprenticeController::class,'destroy'])->name('apprentice.destroy');
+Route::get('/apprentice',[PortalController::class,'index'])->name('apprentice.index');
+Route::get('apprentice/create',[PortalController::class,'create'])->name('apprentice.create');
+Route::post('apprentice/store',[PortalController::class,'store'])->name('apprentice.store');
+Route::get('apprentice/edit/{apprentice}',[PortalController::class,'edit'])->name('apprentice.edit');
+Route::put('apprentice/update/{apprentice}',[PortalController::class,'update'])->name('apprentice.update');
+Route::delete('apprentice/delete/{apprentice}',[PortalController::class,'destroy'])->name('apprentice.destroy');
 
 Route::get('/login', function () {
 	return view('auth.login');
@@ -104,7 +105,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin');
-Route::get('/portal', [PortalController::class, 'index'])->name('portal');
+Route::get('/portal', [ApprenticePortalController::class, 'index'])->name('portal');
 
 Route::get('/convocatorias', [ConvocatoriaController::class, 'index'])->name('convocatoria.index');
 Route::get('/convocatorias/create', [ConvocatoriaController::class, 'create'])->name('convocatoria.create');
@@ -121,5 +122,3 @@ Route::post('/convocatorias/{convocatoria}/inscribirme', [InscripcionController:
 Route::patch('/mis-inscripciones/{inscripcion}/cancelar', [InscripcionController::class, 'cancel'])->name('inscripcion.cancel');
 Route::get('/convocatorias/{convocatoria}/inscritos', [InscripcionController::class, 'inscritos'])->name('convocatoria.inscritos');
 Route::patch('/admin/inscripciones/{inscripcion}/estado', [InscripcionController::class, 'updateStatus'])->name('inscripcion.update-status');
-
-
