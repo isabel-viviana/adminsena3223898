@@ -32,6 +32,45 @@ class TrainingCenterController extends Controller
         return view('trainingCenter.create');
 
     }
+    
+    public function apiIndex()
+    {
+        return response()->json(TrainingCenter::orderBy('id')->get());
+    }
+
+    public function apiShow(TrainingCenter $trainingCenter)
+    {
+        return response()->json($trainingCenter);
+    }
+
+    public function apiStore(Request $request)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+        ]);
+
+        return response()->json(TrainingCenter::create($data), 201);
+    }
+
+    public function apiUpdate(Request $request, TrainingCenter $trainingCenter)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+        ]);
+
+        $trainingCenter->update($data);
+
+        return response()->json($trainingCenter->fresh());
+    }
+
+    public function apiDestroy(TrainingCenter $trainingCenter)
+    {
+        $trainingCenter->delete();
+
+        return response()->noContent();
+    }
 
     public function store(Request $request){
         $trainingCenter = TrainingCenter::create([

@@ -28,6 +28,43 @@ class AreaController extends Controller
         return view('area.index', compact('areas'));
     }
 
+    public function apiIndex()
+    {
+        return response()->json(Area::orderBy('id')->get());
+    }
+
+    public function apiShow(Area $area)
+    {
+        return response()->json($area);
+    }
+
+    public function apiStore(Request $request)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        return response()->json(Area::create($data), 201);
+    }
+
+    public function apiUpdate(Request $request, Area $area)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        $area->update($data);
+
+        return response()->json($area->fresh());
+    }
+
+    public function apiDestroy(Area $area)
+    {
+        $area->delete();
+
+        return response()->noContent();
+    }
+
     public function store(Request $request)
     {
         Area::create([

@@ -32,6 +32,47 @@ class ComputerController extends Controller
         return view('computer.create');
 
     }
+    
+    public function apiIndex()
+    {
+        return response()->json(Computer::orderBy('id')->get());
+    }
+
+    public function apiShow(Computer $computer)
+    {
+        return response()->json($computer->load('apprentices'));
+    }
+
+    public function apiStore(Request $request)
+    {
+        $data = $request->validate([
+            'serial_num' => ['required', 'string', 'max:255'],
+            'numero' => ['nullable', 'string', 'max:255'],
+            'marca' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        return response()->json(Computer::create($data), 201);
+    }
+
+    public function apiUpdate(Request $request, Computer $computer)
+    {
+        $data = $request->validate([
+            'serial_num' => ['required', 'string', 'max:255'],
+            'numero' => ['nullable', 'string', 'max:255'],
+            'marca' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $computer->update($data);
+
+        return response()->json($computer->fresh());
+    }
+
+    public function apiDestroy(Computer $computer)
+    {
+        $computer->delete();
+
+        return response()->noContent();
+    }
 
     public function store(Request $request){
         $computer = Computer::create([

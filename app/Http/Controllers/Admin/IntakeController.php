@@ -65,6 +65,11 @@ class IntakeController extends Controller
 
         return view('convocatoria.create', compact('courses', 'trainingCenters'));
     }
+    
+    public function apiIndex()
+    {
+        return response()->json(Convocatoria::orderBy('id')->get());
+    }
 
     public function store(Request $request)
     {

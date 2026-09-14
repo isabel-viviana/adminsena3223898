@@ -38,6 +38,67 @@ class PortalController extends Controller
         return view('apprentice.create', compact('courses', 'computers'));
     }
 
+    public function apiIndex()
+    {
+        return response()->json(Apprentice::orderBy('id')->get());
+    }
+
+    public function apiShow(Apprentice $apprentice)
+    {
+        return response()->json($apprentice->load(['program', 'course', 'computer', 'person', 'intake', 'enrollment']));
+    }
+
+    public function apiStore(Request $request)
+    {
+        $data = $request->validate([
+            'persona_id' => ['nullable', 'exists:personas,id'],
+            'convocatoria_id' => ['nullable', 'exists:convocatorias,id'],
+            'inscripcion_id' => ['nullable', 'exists:inscripciones,id'],
+            'codigo_matricula' => ['nullable', 'string', 'max:50'],
+            'estado_academico' => ['nullable', 'string', 'max:50'],
+            'fecha_matricula' => ['nullable', 'date'],
+            'fase_formativa' => ['nullable', 'string', 'max:50'],
+            'name_apren' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'cell' => ['required', 'string', 'max:255'],
+            'program_id' => ['nullable', 'exists:programs,id'],
+            'course_id' => ['nullable', 'exists:courses,id'],
+            'computer_id' => ['nullable', 'exists:computers,id'],
+        ]);
+
+        return response()->json(Apprentice::create($data), 201);
+    }
+
+    public function apiUpdate(Request $request, Apprentice $apprentice)
+    {
+        $data = $request->validate([
+            'persona_id' => ['nullable', 'exists:personas,id'],
+            'convocatoria_id' => ['nullable', 'exists:convocatorias,id'],
+            'inscripcion_id' => ['nullable', 'exists:inscripciones,id'],
+            'codigo_matricula' => ['nullable', 'string', 'max:50'],
+            'estado_academico' => ['nullable', 'string', 'max:50'],
+            'fecha_matricula' => ['nullable', 'date'],
+            'fase_formativa' => ['nullable', 'string', 'max:50'],
+            'name_apren' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'cell' => ['required', 'string', 'max:255'],
+            'program_id' => ['nullable', 'exists:programs,id'],
+            'course_id' => ['nullable', 'exists:courses,id'],
+            'computer_id' => ['nullable', 'exists:computers,id'],
+        ]);
+
+        $apprentice->update($data);
+
+        return response()->json($apprentice->fresh());
+    }
+
+    public function apiDestroy(Apprentice $apprentice)
+    {
+        $apprentice->delete();
+
+        return response()->noContent();
+    }
+
     public function store(Request $request)
     {
         $apprentice = Apprentice::create($request->all());

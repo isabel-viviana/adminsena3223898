@@ -58,6 +58,8 @@ class EnrollmentController extends Controller
         return view('portal.comprobante', compact('inscripcion'));
     }
 
+    
+
     public function store(Request $request, Convocatoria $convocatoria)
     {
         $this->ensureApprentice();

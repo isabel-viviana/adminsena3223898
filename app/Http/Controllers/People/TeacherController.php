@@ -39,6 +39,67 @@ class TeacherController extends Controller
         return view('teacher.create', compact('areas', 'trainingCenters', 'courses'));
     }
 
+    public function apiIndex()
+    {
+        return response()->json(Teacher::orderBy('id')->get());
+    }
+
+    public function apiShow(Teacher $teacher)
+    {
+        return response()->json($teacher->load(['area', 'trainingCenter', 'courses', 'person']));
+    }
+
+    public function apiStore(Request $request)
+    {
+        $data = $request->validate([
+            'persona_id' => ['nullable', 'exists:personas,id'],
+            'name' => ['required', 'string', 'max:255'],
+            'codigo_instructor' => ['nullable', 'string', 'max:50'],
+            'especialidad' => ['nullable', 'string', 'max:150'],
+            'email' => ['required', 'email', 'max:255'],
+            'area_id' => ['required', 'exists:areas,id'],
+            'training_centers_id' => ['required', 'exists:training_centers,id'],
+            'courses' => ['nullable', 'array'],
+            'courses.*' => ['integer', 'exists:courses,id'],
+        ]);
+
+        $courseIds = $data['courses'] ?? [];
+        unset($data['courses']);
+        $teacher = Teacher::create($data);
+        $teacher->courses()->sync($courseIds);
+
+        return response()->json($teacher->load(['area', 'trainingCenter', 'courses', 'person']), 201);
+    }
+
+    public function apiUpdate(Request $request, Teacher $teacher)
+    {
+        $data = $request->validate([
+            'persona_id' => ['nullable', 'exists:personas,id'],
+            'name' => ['required', 'string', 'max:255'],
+            'codigo_instructor' => ['nullable', 'string', 'max:50'],
+            'especialidad' => ['nullable', 'string', 'max:150'],
+            'email' => ['required', 'email', 'max:255'],
+            'area_id' => ['required', 'exists:areas,id'],
+            'training_centers_id' => ['required', 'exists:training_centers,id'],
+            'courses' => ['nullable', 'array'],
+            'courses.*' => ['integer', 'exists:courses,id'],
+        ]);
+
+        $courseIds = $data['courses'] ?? [];
+        unset($data['courses']);
+        $teacher->update($data);
+        $teacher->courses()->sync($courseIds);
+
+        return response()->json($teacher->fresh()->load(['area', 'trainingCenter', 'courses', 'person']));
+    }
+
+    public function apiDestroy(Teacher $teacher)
+    {
+        $teacher->delete();
+
+        return response()->noContent();
+    }
+
     public function store(Request $request)
     {
         $teacherData = $request->except('courses');
