@@ -15,18 +15,39 @@ Route::get('/saludo', function () {
 });
 
 Route::get('/areas', [AreaController::class, 'apiIndex']);
+Route::post('/areas', [AreaController::class, 'apiStore']);
+Route::get('/areas/{area}', [AreaController::class, 'apiShow']);
+Route::put('/areas/{area}', [AreaController::class, 'apiUpdate']);
+Route::delete('/areas/{area}', [AreaController::class, 'apiDestroy']);
+
 
 
 Route::get('/courses', [CourseController::class, 'apiIndex']);
-
+Route::post('/courses', [CourseController::class, 'apiStore']);
+Route::get('/courses/{course}', [CourseController::class, 'apiShow']);
+Route::put('/courses/{course}', [CourseController::class, 'apiUpdate']);
+Route::delete('/courses/{course}', [CourseController::class, 'apiDestroy']);
 
 Route::get('/training-centers', [TrainingCenterController::class, 'apiIndex']);
-
+Route::post('/training-centers', [TrainingCenterController::class, 'apiStore']);
+Route::get('/training-centers/{trainingCenter}', [TrainingCenterController::class, 'apiShow']);
+Route::put('/training-centers/{trainingCenter}', [TrainingCenterController::class, 'apiUpdate']);
+Route::delete('/training-centers/{trainingCenter}', [TrainingCenterController::class, 'apiDestroy']);
 
 Route::get('/teachers', [TeacherController::class, 'apiIndex']);
-
+Route::post('/teachers', [TeacherController::class, 'apiStore']);
+Route::get('/teachers/{teacher}', [TeacherController::class, 'apiShow']);
+Route::put('/teachers/{teacher}', [TeacherController::class, 'apiUpdate']);
+Route::delete('/teachers/{teacher}', [TeacherController::class, 'apiDestroy']);
 
 Route::get('/computers', [ComputerController::class, 'apiIndex']);
-
+Route::post('/computers', [ComputerController::class, 'apiStore']);
+Route::get('/computers/{computer}', [ComputerController::class, 'apiShow']);
+Route::put('/computers/{computer}', [ComputerController::class, 'apiUpdate']);
+Route::delete('/computers/{computer}', [ComputerController::class, 'apiDestroy']);
 
 Route::get('/apprentices', [PortalController::class, 'apiIndex']);
+Route::post('/apprentices', [PortalController::class, 'apiStore']);
+Route::get('/apprentices/{apprentice}', [PortalController::class, 'apiShow']);
+Route::put('/apprentices/{apprentice}', [PortalController::class, 'apiUpdate']);
+Route::delete('/apprentices/{apprentice}', [PortalController::class, 'apiDestroy']);
