@@ -23,13 +23,13 @@ class TrainingCenterController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('trainingCenter.index',compact('trainingCenters'));
+        return view('admin.training-centers.index',compact('trainingCenters'));
 
     }
 
     public function create (){
 
-        return view('trainingCenter.create');
+        return view('admin.training-centers.create');
 
     }
     
@@ -82,7 +82,7 @@ class TrainingCenterController extends Controller
 
     public function edit(TrainingCenter $trainingCenter)
     {
-        return view('trainingCenter.edit', compact('trainingCenter'));
+        return view('admin.training-centers.edit', compact('trainingCenter'));
     }
 
     public function update(Request $request, TrainingCenter $trainingCenter)

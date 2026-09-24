@@ -30,7 +30,7 @@ class EnrollmentController extends Controller
             ->pluck('convocatoria_id')
             ->all();
 
-        return view('portal.convocatorias', compact('convocatorias', 'inscritos'));
+        return view('aspirant.convocatorias.catalog', compact('convocatorias', 'inscritos'));
     }
 
     public function misInscripciones()
@@ -44,7 +44,7 @@ class EnrollmentController extends Controller
             ->latest('enrolled_at')
             ->get();
 
-        return view('portal.mis_inscripciones', compact('inscripciones'));
+        return view('aspirant.inscripciones.mis_inscripciones', compact('inscripciones'));
     }
 
     public function comprobante(Inscripcion $inscripcion)
@@ -55,7 +55,7 @@ class EnrollmentController extends Controller
 
         $inscripcion->load(['persona', 'convocatoria.course', 'convocatoria.trainingCenter']);
 
-        return view('portal.comprobante', compact('inscripcion'));
+        return view('aspirant.inscripciones.comprobante', compact('inscripcion'));
     }
 
     

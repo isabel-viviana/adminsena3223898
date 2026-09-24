@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\People;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,8 +11,8 @@ use App\Models\Academic\Course;
 
 class TeacherController extends Controller
 {
-    public function index(Request $request){
-
+    public function index(Request $request)
+    {
         $query = trim($request->query('q', ''));
 
         $teachers = Teacher::query()
@@ -26,8 +26,7 @@ class TeacherController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('teacher.index',compact('teachers'));
-
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     public function create()
@@ -36,7 +35,7 @@ class TeacherController extends Controller
         $trainingCenters = TrainingCenter::all();
         $courses = Course::all();
 
-        return view('teacher.create', compact('areas', 'trainingCenters', 'courses'));
+        return view('admin.teachers.create', compact('areas', 'trainingCenters', 'courses'));
     }
 
     public function apiIndex()
@@ -105,16 +104,16 @@ class TeacherController extends Controller
         $teacherData = $request->except('courses');
         $teacher = Teacher::create($teacherData);
         
-        // Asignar cursos a través de la tabla intermedia
+        // Asignar profesores a través de la tabla intermedia
         if ($request->has('courses') && !empty($request->courses)) {
             $teacher->courses()->attach($request->courses);
         }
 
-        $file=$request->file("urlFoto");
+        $file = $request->file("urlFoto");
 
         if ($file) {
             $nombreArchivo = "foto_".time().".".$file->guessExtension();
-            $request->file('urlFoto')->storeAs('public/images', $nombreArchivo );
+            $request->file('urlFoto')->storeAs('public/images', $nombreArchivo);
 
             $teacher->urlFoto = $nombreArchivo;
             $teacher->save();
@@ -129,7 +128,7 @@ class TeacherController extends Controller
         $trainingCenters = TrainingCenter::all();
         $courses = Course::all();
 
-        return view('teacher.edit', compact('teacher', 'areas', 'trainingCenters', 'courses'));
+        return view('admin.teachers.edit', compact('teacher', 'areas', 'trainingCenters', 'courses'));
     }
 
     public function update(Request $request, Teacher $teacher)

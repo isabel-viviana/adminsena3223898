@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Resource;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,8 +8,8 @@ use App\Models\Resource\Computer;
 
 class ComputerController extends Controller
 {
-    public function index(Request $request){
-
+    public function index(Request $request)
+    {
         $query = trim($request->query('q', ''));
 
         $computers = Computer::query()
@@ -23,14 +23,12 @@ class ComputerController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('computer.index',compact('computers'));
-
+        return view('admin.computers.index', compact('computers'));
     }
 
-    public function create (){
-
-        return view('computer.create');
-
+    public function create()
+    {
+        return view('admin.computers.create');
     }
     
     public function apiIndex()
@@ -74,19 +72,20 @@ class ComputerController extends Controller
         return response()->noContent();
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $computer = Computer::create([
             'serial_num' => $request->numero,
             'numero' => $request->numero,
             'marca' => $request->marca
         ]);
 
-        //ADJUNTAR
-        $file=$request->file("urlFoto");
+        // ADJUNTAR
+        $file = $request->file("urlFoto");
 
         if ($file) {
             $nombreArchivo = "foto_".time().".".$file->guessExtension();
-            $request->file('urlFoto')->storeAs('public/images', $nombreArchivo );
+            $request->file('urlFoto')->storeAs('public/images', $nombreArchivo);
 
             $computer->urlFoto = $nombreArchivo;
             $computer->save();
@@ -97,7 +96,7 @@ class ComputerController extends Controller
 
     public function edit(Computer $computer)
     {
-        return view('computer.edit', compact('computer'));
+        return view('admin.computers.edit', compact('computer'));
     }
 
     public function update(Request $request, Computer $computer)

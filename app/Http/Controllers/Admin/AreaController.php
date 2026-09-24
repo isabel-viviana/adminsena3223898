@@ -10,7 +10,7 @@ class AreaController extends Controller
 {
     public function create()
     {
-        return view('area.create');
+        return view('admin.areas.create');
     }
 
     public function index(Request $request)
@@ -25,7 +25,7 @@ class AreaController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('area.index', compact('areas'));
+        return view('admin.areas.index', compact('areas'));
     }
 
     public function apiIndex()
@@ -76,7 +76,7 @@ class AreaController extends Controller
 
     public function edit(Area $area)
     {
-        return view('area.edit', compact('area'));
+        return view('admin.areas.edit', compact('area'));
     }
 
     public function update(Request $request, Area $area)

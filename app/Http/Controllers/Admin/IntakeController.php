@@ -26,7 +26,7 @@ class IntakeController extends Controller
 
         $stats = $this->aggregateStats();
 
-        return view('convocatoria.index', compact('convocatorias', 'query', 'stats'));
+        return view('admin.convocatorias.index', compact('convocatorias', 'query', 'stats'));
     }
 
     public function catalog(Request $request)
@@ -47,7 +47,7 @@ class IntakeController extends Controller
         $areas = Area::orderBy('name')->get();
         $trainingCenters = TrainingCenter::orderBy('name')->get();
 
-        return view('portal.convocatorias', [
+        return view('aspirant.convocatorias.catalog', [
             'convocatorias' => $convocatorias,
             'inscritos' => $inscritos,
             'filters' => $request->only(['programa', 'area_id', 'training_center_id', 'modality', 'schedule']),
@@ -63,7 +63,7 @@ class IntakeController extends Controller
         $courses = Course::orderBy('name_curso')->get();
         $trainingCenters = TrainingCenter::orderBy('name')->get();
 
-        return view('convocatoria.create', compact('courses', 'trainingCenters'));
+        return view('admin.convocatorias.create', compact('courses', 'trainingCenters'));
     }
     
     public function apiIndex()
@@ -87,7 +87,7 @@ class IntakeController extends Controller
         $courses = Course::orderBy('name_curso')->get();
         $trainingCenters = TrainingCenter::orderBy('name')->get();
 
-        return view('convocatoria.edit', compact('convocatoria', 'courses', 'trainingCenters'));
+        return view('admin.convocatorias.edit', compact('convocatoria', 'courses', 'trainingCenters'));
     }
 
     public function update(Request $request, Convocatoria $convocatoria)
@@ -111,7 +111,7 @@ class IntakeController extends Controller
             ->exists();
         $stats = $this->statsFor(collect([$convocatoria]))[$convocatoria->id];
 
-        return view('portal.detalle_convocatoria', compact('convocatoria', 'inscritos', 'stats'));
+        return view('aspirant.convocatorias.detail', compact('convocatoria', 'inscritos', 'stats'));
     }
 
     public function adminStats(Convocatoria $convocatoria)
@@ -126,7 +126,7 @@ class IntakeController extends Controller
             ->orderByDesc('start_date')
             ->paginate(10);
 
-        return view('convocatoria.index', compact('convocatorias', 'query', 'stats', 'convocatoria'));
+        return view('admin.convocatorias.index', compact('convocatorias', 'query', 'stats', 'convocatoria'));
     }
 
     private function statsFor($convocatorias): array

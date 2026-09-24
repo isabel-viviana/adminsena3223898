@@ -29,7 +29,7 @@ class CourseController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('course.index',compact('courses'));
+        return view('admin.courses.index',compact('courses'));
 
     }
 
@@ -38,7 +38,7 @@ class CourseController extends Controller
         $trainingCenters = TrainingCenter::all();
         $teachers = Teacher::all();
 
-        return view('course.create', compact('areas', 'trainingCenters', 'teachers'));
+        return view('admin.courses.create', compact('areas', 'trainingCenters', 'teachers'));
     }
 
     public function apiIndex()
@@ -142,7 +142,7 @@ class CourseController extends Controller
         $trainingCenters = TrainingCenter::all();
         $teachers = Teacher::all();
 
-        return view('course.edit', compact('course', 'areas', 'trainingCenters', 'teachers'));
+        return view('admin.courses.edit', compact('course', 'areas', 'trainingCenters', 'teachers'));
     }
 
     public function update(Request $request, Course $course)
